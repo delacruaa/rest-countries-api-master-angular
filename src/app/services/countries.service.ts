@@ -21,7 +21,7 @@ export class CountriesService {
       .pipe(catchError(this.handleError));
   }
   public getCountriesByName(name: string): Observable<ICountry[]> {
-    let dataUrl: string = `https://restcountries.com/v3.1/name/${name}`;
+    let dataUrl: string = `https://restcountries.com/v3.1/${name}`;
     return this.httpClient
       .get<ICountry[]>(dataUrl)
       .pipe(catchError(this.handleError));

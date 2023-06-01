@@ -1,13 +1,13 @@
 <div class="container">
     <div class="wrapper">
         <div class="loading" *ngIf="loading">Loading...</div>
-        <div class="error" *ngIf="errorMessage">Error something went wrong....</div>
+        <div class="error" *ngIf="errorMessage.length!==0">Error something went wrong....</div>
         <button class="btn" routerLink="/">
             <img src="/assets/arrow.svg" alt="arrow">
             <p>Back</p>
         </button>
 
-        <div class="country__wrapper">
+        <div class="country__wrapper" *ngIf="!loading">
             <img [src]="country.flags.png" alt="flag">
 
             <div class="country">
@@ -30,7 +30,7 @@
                 <p>Borders: </p>
                 <div class="borders">
                    
-                    <div class="border" *ngFor="let border of country.borders" >
+                    <div class="border" *ngFor="let border of country.borders" routerLink="/alpha/{{border}}" >
                         {{border}}
                     </div>
                 </div>

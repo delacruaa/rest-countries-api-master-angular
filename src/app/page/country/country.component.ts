@@ -24,9 +24,15 @@ export class CountryComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((param) => {
-      this.countryName = param.get('name');
+      if (param.has('name')) {
+        this.countryName = param.get('name');
+        this.getCountriesByName(`name/${this.countryName!}`);
+      }
+      if (param.has('alpha')) {
+        this.countryName = param.get('alpha');
+        this.getCountriesByName(`alpha/${this.countryName!}`);
+      }
     });
-    this.getCountriesByName(this.countryName!);
   }
   getCountriesByName(name: string) {
     this.loading = true;

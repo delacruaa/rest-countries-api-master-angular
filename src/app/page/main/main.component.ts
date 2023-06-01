@@ -18,6 +18,7 @@ export class MainComponent implements OnInit {
     this.getAllCountriesFromServer();
   }
   public getAllCountriesFromServer() {
+    this.errorMessage = '';
     this.loading = true;
     this.coutriesService.getAllCountry().subscribe(
       (data) => {
@@ -32,6 +33,7 @@ export class MainComponent implements OnInit {
     );
   }
   public getCountriesByRegion(region: string) {
+    this.errorMessage = '';
     this.loading = true;
     this.coutriesService.getCountriesByRegion(region).subscribe(
       (data) => {
@@ -47,6 +49,7 @@ export class MainComponent implements OnInit {
   }
 
   handleData(region: string): void {
+    this.errorMessage = '';
     this.region = region;
     if (region !== 'All') {
       this.getCountriesByRegion(region);
@@ -55,12 +58,18 @@ export class MainComponent implements OnInit {
     }
   }
   handleInput(name: string): void {
+ 
     if (name !== '') {
+      this.errorMessage = '';
       this.countries = this.countries.filter((item) => {
         return item.name.common.toLowerCase().includes(name);
       });
     } else {
       this.handleData(this.region);
+    }
+
+    if (this.countries.length == 0) {
+      this.errorMessage = 'Not Found Country';
     }
   }
 }

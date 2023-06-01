@@ -5,7 +5,7 @@
    </div>
    <div class="country__list">
       <div class="loading" *ngIf="loading">Loading...</div>
-      <div class="error" *ngIf="errorMessage">Error something went wrong....</div>
+      <div class="error" *ngIf="errorMessage.length!==0 && countries.length==0">{{errorMessage}}</div>
       <app-country-item *ngFor="let country of countries" [country]="country" ></app-country-item>
    </div>
 </div>

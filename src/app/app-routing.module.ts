@@ -5,8 +5,8 @@ import { CountryComponent } from './page/country/country.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: ':name', component: CountryComponent },
-
+  { path: 'name/:name', component: CountryComponent },
+  { path: 'alpha/:alpha', component: CountryComponent },
   { path: '**', redirectTo: '', component: MainComponent },
 ];
 
