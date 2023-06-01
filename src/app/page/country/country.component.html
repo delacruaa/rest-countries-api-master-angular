@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="loading" *ngIf="loading">Loading...</div>
+        <div class="error" *ngIf="errorMessage">Error something went wrong....</div>
+        <button class="btn" routerLink="/">
+            <img src="/assets/arrow.svg" alt="arrow">
+            <p>Back</p>
+        </button>
+
+        <div class="country__wrapper">
+            <img [src]="country.flags.png" alt="flag">
+
+            <div class="country">
+                <h1>{{country.name.common}}</h1>
+                <div class="country__info" >
+                    <div class="col">
+                        <p> <span>Native Name: </span>{{nativeName}}</p>
+                        <p> <span>Population: </span>{{country.population}}</p>
+                        <p> <span>Region: </span>{{country.region}}</p>
+                        <p> <span>Sub region: </span>{{country.subregion}}</p>
+                        <p> <span>Capital: </span>{{country.capital}}</p>
+                    </div>
+                    <div class="col">
+                        <p> <span>Top Level Domain: </span>{{country.tld}}</p>
+                        <p> <span>Currencies: </span>{{currencies}}</p>
+                        <p> <span>Languages: </span>{{languages}}</p>
+                    </div>
+                </div>
+               <div class="borders__wrapper">
+                <p>Borders: </p>
+                <div class="borders">
+                   
+                    <div class="border" *ngFor="let border of country.borders" >
+                        {{border}}
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

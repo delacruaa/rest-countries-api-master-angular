@@ -1,0 +1,11 @@
+<div class="container">
+   <div class="option__wrapper">
+    <app-search (dataEvent)="handleInput($event)"></app-search>
+    <app-dropdown (dataEvent)="handleData($event)" [options]="['All', 'Africa', 'America', 'Asia','Europe','Oceania']"></app-dropdown>
+   </div>
+   <div class="country__list">
+      <div class="loading" *ngIf="loading">Loading...</div>
+      <div class="error" *ngIf="errorMessage">Error something went wrong....</div>
+      <app-country-item *ngFor="let country of countries" [country]="country" ></app-country-item>
+   </div>
+</div>

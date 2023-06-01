@@ -1,0 +1,9 @@
+<div class="dropdown">
+    <div class="selected" (click)="onToggle()">
+       <p>{{selectedOption}}</p>
+       <img src="/assets/arrow.svg" alt="arrow"  class="img">
+    </div>
+    <ul class="select__list" *ngIf="isOpen">
+        <li *ngFor="let option of options" (click)="onSelect(option)">{{option}}</li>
+    </ul>
+</div>
